@@ -23,7 +23,7 @@ const LiveSEOAnalyzer = () => {
       console.error('URL validation failed:', error);
       return null;
     }
-  };
+  }; 
 
   const analyzePageSpeed = async (validatedUrl: string) => {
     // Use the updated Google PageSpeed Insights API key

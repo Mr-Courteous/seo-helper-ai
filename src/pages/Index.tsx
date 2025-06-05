@@ -24,8 +24,8 @@ const Index = () => {
       <main className="flex-grow relative z-10">
         <Hero />
         <Clients />
-        <LiveSEOAnalyzer />
-        <AIContentDemo />
+        {/* <LiveSEOAnalyzer /> */}
+        {/* <AIContentDemo /> */}
         <Benefits />
         <Features />
         <HowItWorks />

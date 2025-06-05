@@ -16,7 +16,7 @@ import AuthPage from "./pages/AuthPage";
 import LandingPage from "./pages/LandingPage"; 
 import WhiteLabelPage from "./pages/Dashboard/WhiteLabelPage";
 import ExitIntentPopup from "./components/ExitIntentPopup";
-
+import Authed from "./pages/DashboardAuthed";
 // New pages
 import BlogPage from "./pages/BlogPage";
 import HelpCenterPage from "./pages/HelpCenterPage";
@@ -37,6 +37,8 @@ import KeywordResearchPage from "./pages/Dashboard/KeywordResearchPage";
 import RankTrackingPage from "./pages/Dashboard/RankTrackingPage";
 import ContentToolsPage from "./pages/Dashboard/ContentToolsPage";
 import SettingsPage from "./pages/Dashboard/SettingsPage";
+import DashboardLayout1 from "./components/AIComponents/Dashboard";
+import Auth from "./pages/AIPages/LoginAuth";
 
 const queryClient = new QueryClient();
 
@@ -55,7 +57,15 @@ const App = () => (
           <Route path="/demo" element={<DemoPage />} />
           <Route path="/testimonials" element={<TestimonialsPage />} />
           <Route path="/faq" element={<FAQPage />} />
-          <Route path="/login" element={<AuthPage />} />
+
+          {/* <Route path="/login" element={<Auth />} /> */}
+
+          {/* <Route path="/loggedIn" element={<DashboardLayout1 />} /> */}
+          <Route path="/log-in-dashoard" element={<Authed />} />
+
+
+
+          {/* <Route path="/loginAI" element={<AuthPage />} /> */}
           <Route path="/ad-campagne" element={<LandingPage />} />
           
           {/* New content pages */}

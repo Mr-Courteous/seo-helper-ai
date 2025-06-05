@@ -12,8 +12,8 @@ const DashboardContent1 = ({ userEmail, onSignOut }) => {
   return (
     <div className="text-center space-y-6 p-8 bg-card rounded-lg shadow-md border border-gray-100">
 
-      <FloatingElements />
-
+      <FloatingElements />  
+         
       <Navbar />
 
       <h2 className="text-3xl font-bold text-foreground">Welcome to Your Dashboard!</h2>

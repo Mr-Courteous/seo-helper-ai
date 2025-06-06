@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
+import { Badge } from '@/components/ui/badge'; // <-- THIS LINE WAS MISSING IN YOUR ORIGINAL SNIPPET
 import { Search, TrendingUp, TrendingDown, Info, ChevronDown, ChevronUp } from 'lucide-react'; // Added Chevron icons
 
 // Define the API endpoint and headers

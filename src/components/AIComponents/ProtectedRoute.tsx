@@ -18,7 +18,7 @@ const ProtectedRoute = ({ children }) => {
         setSession(session);
         setLoading(false);
         if (!session) {
-          navigate('/log-in-dashoard'); // Redirect to your login page
+          navigate('/login'); // Redirect to your login page
         }
       }
     };
@@ -31,7 +31,7 @@ const ProtectedRoute = ({ children }) => {
           setSession(currentSession);
           setLoading(false);
           if (!currentSession) {
-            navigate('/log-in-dashoard'); // Redirect to your login page
+            navigate('/dashboard'); // Redirect to your login page
           }
         }
       }

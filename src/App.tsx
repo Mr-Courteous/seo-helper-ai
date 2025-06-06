@@ -16,7 +16,7 @@ import AuthPage from "./pages/AuthPage";
 import LandingPage from "./pages/LandingPage"; 
 import WhiteLabelPage from "./pages/Dashboard/WhiteLabelPage";
 import ExitIntentPopup from "./components/ExitIntentPopup";
-import Authentication from "./pages/DashboardAuthed";
+// import Authentication from "./pages/AIPages/DashboardAuthed";
 // New pages
 import BlogPage from "./pages/BlogPage";
 import HelpCenterPage from "./pages/HelpCenterPage";
@@ -38,8 +38,10 @@ import RankTrackingPage from "./pages/Dashboard/RankTrackingPage";
 import ContentToolsPage from "./pages/Dashboard/ContentToolsPage";
 import SettingsPage from "./pages/Dashboard/SettingsPage";
 import DashboardLayout1 from "./components/AIComponents/Dashboard";
-import Authed from "./pages/AIPages/LoginAuth";
+import DashboardContent1 from "./components/AIComponents/DashboardAuthed";
+import Authentication1 from "./pages/AIPages/LoginAuth";
 import ProtectedRoute from "./components/AIComponents/ProtectedRoute";
+import SeoHelper from "./pages/AIPages/FeaturesPage";
 
 const queryClient = new QueryClient();
 
@@ -61,8 +63,12 @@ const App = () => (
 
           {/* <Route path="/login" element={<Auth />} /> */}
 
-          {/* <Route path="/loggedIn" element={<DashboardLayout1 />} /> */}
-          <Route path="/log-in-dashoard" element={<Authentication />} />
+          <Route path="/dashboard" element={<DashboardContent1 />} />
+          <Route path="/login" element={<Authentication1 />} />
+          <Route path="/seo-helper" element={<SeoHelper />} />
+
+
+          
 
 
 
@@ -82,16 +88,15 @@ const App = () => (
           <Route path="/terms-of-service" element={<TermsOfServicePage />} />
           
           {/* Dashboard Routes */}
-          <Route path="/dashboard" element={<DashboardLayout />}>
+          {/* <Route path="/dashboard" element={<DashboardLayout />}>
             <Route index element={<DashboardPage />} />
             <Route path="analyzer" element={<AnalyzerPage />} />
             <Route path="keywords" element={<KeywordResearchPage />} />
             <Route path="rank-tracking" element={<RankTrackingPage />} />
             <Route path="content" element={<ContentToolsPage />} />
             <Route path="settings" element={<SettingsPage />} />
-            {/* All other routes show "Coming Soon" */}
             <Route path="*" element={<div>Coming Soon</div>} />
-          </Route>
+          </Route> */}
 
           <Route
           path="/pricing" // This is the URL for your Pricing Page

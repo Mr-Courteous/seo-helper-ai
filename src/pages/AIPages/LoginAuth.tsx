@@ -103,7 +103,7 @@ const Authentication1: React.FC = () => {
       const { error } = await supabase.auth.signInWithOAuth({
         provider: 'google',
         options: {
-          redirectTo: 'http://localhost:8080/dashboard', // Supabase will redirect HERE after OAuth
+          redirectTo: 'https://seo-helper-j3i878uvv-mr-courteous-projects-4aa873c5.vercel.app/dashboard', // Supabase will redirect HERE after OAuth
         },
       });
       if (error) throw error;

@@ -2,15 +2,23 @@ import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-// Updated icons for specific functions and navigation
-import { LayoutDashboard, FileText, Search, PenTool, Store, DollarSign, ArrowRight } from 'lucide-react'; 
+import { LayoutDashboard, FileText, Search, PenTool, Store, DollarSign, ArrowRight } from 'lucide-react';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
 
-// Define a type for the function of the button
-interface RandomDashboardProps {
-  onNavigateToFeatures: () => void; // Function to call when "Go to Features" button is clicked
-}
+// No longer needs props interface as navigation is handled internally
+// interface RandomDashboardProps {
+//   onNavigateToFeatures: () => void;
+// }
 
-const RandomDashboard: React.FC<RandomDashboardProps> = ({ onNavigateToFeatures }) => {
+// Removed the props from the component signature
+const RandomDashboard: React.FC = () => {
+  const navigate = useNavigate(); // Initialize the navigate hook
+
+  // Function to handle the navigation directly
+  const handleNavigateToFeatures = () => {
+    navigate('/seo-helper'); // Navigate to the specified path
+  };
+
   return (
     <section className="py-20 bg-white">
       <div className="container mx-auto px-4">
@@ -112,7 +120,7 @@ const RandomDashboard: React.FC<RandomDashboardProps> = ({ onNavigateToFeatures 
               Ga naar de functionaliteitspagina om al je SEO-taken uit te voeren.
             </CardDescription>
             <Button
-              onClick={onNavigateToFeatures}
+              onClick={handleNavigateToFeatures} // Now calls the internal navigation function
               className="bg-white text-brand-blue hover:bg-white/90 px-8 py-4 text-lg font-semibold shadow-lg"
             >
               Ga naar Functies

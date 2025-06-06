@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge'; // <-- THIS LINE WAS MISSING IN YOUR ORIGINAL SNIPPET
-import { Search, TrendingUp, TrendingDown, Info, ChevronDown, ChevronUp } from 'lucide-react'; // Added Chevron icons
+import { Badge } from '@/components/ui/badge';
+import { Search, TrendingUp, TrendingDown, Info, ChevronDown, ChevronUp } from 'lucide-react';
 
 // Define the API endpoint and headers
 const API_URL = 'https://google-keyword-insight1.p.rapidapi.com/globalkey/';
@@ -21,12 +21,17 @@ interface KeywordInsight {
 }
 
 const KeywordInsightFetcher: React.FC = () => {
-  const [keyword, setKeyword] = useState<string>('Sustainable Living'); // Initial keyword for the first fetch
-  const [data, setData] = useState<KeywordInsight[] | null>(null); // Now an array of KeywordInsight
+  // ----------------------------------------------------
+  // CHANGED: Initial keyword is now null, so no immediate fetch
+  const [keyword, setKeyword] = useState<string | null>(null);
+  // CHANGED: Initial input keyword is empty for a clean start
+  const [inputKeyword, setInputKeyword] = useState<string>('');
+  // ----------------------------------------------------
+
+  const [data, setData] = useState<KeywordInsight[] | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
-  const [inputKeyword, setInputKeyword] = useState<string>('Sustainable Living'); // For input field management
-  const [showAllResults, setShowAllResults] = useState<boolean>(false); // New state for expansion
+  const [showAllResults, setShowAllResults] = useState<boolean>(false);
 
   const RESULTS_LIMIT = 10; // Number of results to show initially
 
@@ -64,13 +69,13 @@ const KeywordInsightFetcher: React.FC = () => {
       }
 
       const result: KeywordInsight[] = await response.json();
-      
+
       console.log("API Response (parsed):", result);
 
       if (result && Array.isArray(result) && result.length > 0) {
-          setData(result); 
+        setData(result);
       } else {
-          setError("No keyword insights found for this query. Try a different keyword.");
+        setError("No keyword insights found for this query. Try a different keyword.");
       }
 
     } catch (err) {
@@ -81,18 +86,21 @@ const KeywordInsightFetcher: React.FC = () => {
     }
   };
 
+  // ----------------------------------------------------
+  // CHANGED: useEffect now only runs if 'keyword' is NOT null
   useEffect(() => {
-    if (keyword) {
+    if (keyword) { // Only fetch if keyword is explicitly set (not null)
       fetchKeywordData(keyword);
     }
-  }, [keyword]);
+  }, [keyword]); // Dependency array remains 'keyword'
+  // ----------------------------------------------------
 
   const handleSearch = (event: React.FormEvent) => {
     event.preventDefault();
-    if (inputKeyword.trim() && inputKeyword.trim() !== keyword) {
-        setKeyword(inputKeyword.trim()); 
-    } else if (!inputKeyword.trim()) {
-        setError("Please enter a keyword to search.");
+    if (inputKeyword.trim()) { // Ensure inputKeyword is not empty
+      setKeyword(inputKeyword.trim()); // This will trigger the useEffect
+    } else {
+      setError("Please enter a keyword to search."); // Provide feedback if input is empty
     }
   };
 
@@ -147,9 +155,9 @@ const KeywordInsightFetcher: React.FC = () => {
                   placeholder="Bijv. duurzaam leven, online marketing..."
                   className="flex-1 text-lg py-3"
                 />
-                <Button 
+                <Button
                   type="submit"
-                  disabled={loading || !inputKeyword.trim()}
+                  disabled={loading || !inputKeyword.trim()} // Disable if loading or input is empty
                   className="bg-gradient-to-r from-brand-blue to-brand-purple px-8 py-3"
                 >
                   {loading ? 'Analyseren...' : 'Zoek Keywords'}
@@ -192,7 +200,7 @@ const KeywordInsightFetcher: React.FC = () => {
                         </tr>
                       </thead>
                       <tbody>
-                        {displayedData?.map((item, index) => ( // Use displayedData here
+                        {displayedData?.map((item, index) => (
                           <tr key={index} className="border-b last:border-b-0 hover:bg-gray-50">
                             <td className="py-3 px-4 text-gray-800">{item.text}</td>
                             <td className="py-3 px-4 text-gray-800">{item.volume.toLocaleString()}</td>
@@ -218,7 +226,7 @@ const KeywordInsightFetcher: React.FC = () => {
                       </tbody>
                     </table>
                   </div>
-                  {data.length > RESULTS_LIMIT && ( // Only show button if there are more results than the limit
+                  {data.length > RESULTS_LIMIT && (
                     <div className="text-center mt-4">
                       <Button
                         onClick={() => setShowAllResults(!showAllResults)}
@@ -240,6 +248,7 @@ const KeywordInsightFetcher: React.FC = () => {
                 </div>
               )}
 
+              {/* Display this message initially when no data, no loading, and no error */}
               {!data && !loading && !error && (
                 <p className="text-center text-gray-600 py-8">
                   Typ een keyword in het zoekveld hierboven en klik op 'Zoek Keywords' om te beginnen.

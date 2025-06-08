@@ -219,7 +219,7 @@ const LiveSEOAnalyzer = () => {
         <div className="text-center mb-12">
           <div className="flex items-center justify-center gap-2 mb-4">
             <Zap className="w-8 h-8 text-brand-purple" />
-            <Badge className="bg-brand-purple text-white">GRATIS TOOL</Badge>
+            <Badge className="bg-brand-purple text-white">GRATIS TOOooooL</Badge>
           </div>
           <h2 className="text-4xl font-bold mb-4">
             Live SEO Analyzer

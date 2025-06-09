@@ -8,7 +8,7 @@ import { Search, TrendingUp, TrendingDown, Info, ChevronDown, ChevronUp } from '
 // Define the API endpoint and headers
 const API_URL = 'https://google-keyword-insight1.p.rapidapi.com/globalkey/';
 const RAPIDAPI_HOST = 'google-keyword-insight1.p.rapidapi.com';
-const RAPIDAPI_KEY = '8545130d9dmsha72607ea7389b3bp1a5b20jsna1c997c934f1'; // WARNING: Exposing API keys client-side is NOT recommended for production!
+const RAPIDAPI_KEY = '6206a2135cmsh07e97125f504849p1da3cbjsn0724b99db56e'; // WARNING: Exposing API keys client-side is NOT recommended for production!
 
 interface KeywordInsight {
   text: string;

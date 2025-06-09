@@ -11,6 +11,7 @@ import AIContentDemo from '@/components/AIContentDemo';
 import KeywordInsightFetcher from '@/components/AIComponents/KeywordFetcher';
 import FloatingElements from '@/components/FloatingElements';
 import Navbar from '@/components/Navbar';
+import SeoMetaDescriptionDisplay from '../../components/AIComponents/Description';
 
 // You can import any components you want to display on this specific page
 // For example:
@@ -115,6 +116,7 @@ const SeoHelper: React.FC = () => {
             <LiveSEOAnalyzer />
             <AIContentDemo />
             <KeywordInsightFetcher />
+            <SeoMetaDescriptionDisplay />
 
             {/* Sign Out Button for this page */}
             <Button

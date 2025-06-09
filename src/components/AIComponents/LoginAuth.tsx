@@ -68,7 +68,7 @@ const Authentication1: React.FC = () => {
         options: {
           // Specify the URL where Supabase should redirect the user after Google authentication
           // This URL MUST be added to your "Redirect URLs" in the Supabase dashboard
-          redirectTo: 'http://localhost:8080/log-in-dashoard', // Ensure this URL is configured in Supabase
+          redirectTo: 'https://seo-helper-ai.vercel.app/dashboard', // Ensure this URL is configured in Supabase
           // Or '/auth/callback'
         },
       });
